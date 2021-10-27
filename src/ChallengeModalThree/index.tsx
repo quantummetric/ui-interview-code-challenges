@@ -1,18 +1,18 @@
-import React from 'react';
-import classnames from 'classnames';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from "react";
+import classnames from "classnames";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface IProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const ChallengeModalTwo: React.FC<IProps> = React.memo((props) => {
+const ChallengeModalThree: React.FC<IProps> = React.memo((props) => {
   const { isOpen, onClose } = props;
 
-  const modalClasses = classnames('challenge-modal', {
-    'is-open': isOpen,
+  const modalClasses = classnames("challenge-modal", {
+    "is-open": isOpen,
   });
 
   return (
@@ -34,5 +34,5 @@ const ChallengeModalTwo: React.FC<IProps> = React.memo((props) => {
   );
 });
 
-ChallengeModalTwo.displayName = 'ChallengeModalTwo';
-export default ChallengeModalTwo;
+ChallengeModalThree.displayName = "ChallengeModalThree";
+export default ChallengeModalThree;

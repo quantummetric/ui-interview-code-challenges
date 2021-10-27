@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./challenge.scss";
 import QuantumMetricLogo from "./QuantumMetricLogo.svg";
 import ChallengeModalOne from "./ChallengeModalOne";
@@ -27,7 +27,7 @@ const Challenge = () => {
         {modals.map((modal, idx) => {
           const Modal = modal;
           return (
-            <>
+            <React.Fragment key={Modal.displayName}>
               <button
                 className="cta-button"
                 onClick={() => setCurrentModal(idx)}
@@ -35,7 +35,7 @@ const Challenge = () => {
                 Open Challenge {idx + 1}
               </button>
               <Modal isOpen={currentModal === idx} onClose={onClose} />
-            </>
+            </React.Fragment>
           );
         })}
       </div>
