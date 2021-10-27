@@ -3,6 +3,38 @@
   pointer-events: none;
 }
 
+// CIDR VALIDATION STYLING
+
+.cidr-validation-header {
+  background: #253343;
+  color: #fff;
+  font-weight: bold;
+}
+
+.cidr-validation-header,
+.cidr-validation-row {
+  line-height: 3em;
+
+  span {
+    padding: 0 1em;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 30%;
+  }
+}
+
+.cidr-validation-row {
+  border-bottom: 1px solid lightgray;
+
+  .is-valid {
+    color: green;
+  }
+
+  .is-not-valid {
+    color: red;
+  }
+}
+
 //CHART STYLING
 
 .transparent {
@@ -213,7 +245,7 @@
   }
   &:before {
     background-color: #ff585e;
-    content: '';
+    content: "";
     border-radius: 3px 0 0 3px;
     display: block;
     position: absolute;
