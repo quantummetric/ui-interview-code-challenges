@@ -51,7 +51,7 @@ const ChallengeModalFour: React.FC<IProps> = React.memo((props) => {
   return (
     <div className={modalClasses}>
       <div className="modal-header">
-        <span className="modal-title">QM Challenge Modal 2</span>
+        <span className="modal-title">QM Challenge Modal 4</span>
         <button className="close-button" onClick={() => onClose}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
