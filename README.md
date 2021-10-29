@@ -35,10 +35,10 @@ The application will hotload the changes you make as you save, so refreshing the
 
 The challenges will be selected by your interviewer or interview panel from the below. Each tests a variety of skills we actually use every day. This will help us to better evaluate you current technical understanding.
 
-Challenge Modal 1 - APIs and Transformations
-Challenge Modal 2 - React and CSS
-Challenge Modal 3 - State Management
-Challenge Modal 4 - Debugging
+- Challenge Modal 1 - APIs and Transformations
+- Challenge Modal 2 - React and CSS
+- Challenge Modal 3 - State Management
+- Challenge Modal 4 - Debugging
 
 ## Tips
 
