@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 type LegendData = {
   url: string;
@@ -28,6 +28,6 @@ const ChartLegend: React.FC<IProps> = (props) => {
   );
 };
 
-ChartLegend.displayName = 'ChartLegend';
+ChartLegend.displayName = "ChartLegend";
 
 export default ChartLegend;

@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 import {
   extent,
   max,
@@ -14,8 +14,8 @@ import {
   Line,
   Axis,
   AxisDomain,
-} from 'd3';
-import { isEqualWith } from 'lodash';
+} from "d3";
+import { isEqualWith } from "lodash";
 import {
   MultiLineChartProps,
   ChartPoint,
@@ -30,14 +30,14 @@ import {
   PrimaryAxis,
   Stringable,
   Formatter,
-} from './utilities/types';
+} from "./utilities/types";
 import {
   d3Axis,
   d3Curve,
   d3Scale,
   getPositionalTranslation,
   isEqualFunctionCompareCustomizer,
-} from './utilities/helpers';
+} from "./utilities/helpers";
 import {
   MARGINS,
   NOOP,
@@ -48,14 +48,14 @@ import {
   VIEWBOX_WIDTH,
   VIEWBOX_HEIGHT,
   COLORS,
-} from './utilities/defaultConfig';
-import { INTERPOLATE_POINT, INTERPOLATE_LINE } from './utilities/interpolators';
+} from "./utilities/defaultConfig";
+import { INTERPOLATE_POINT, INTERPOLATE_LINE } from "./utilities/interpolators";
 import {
   formatAxisByBin,
   formatMajorTicksByBin,
   durationSecondaryAxisFormatter,
   SECONDARY_AXIS_LABEL_FORMATTER,
-} from './utilities/axisFormatters';
+} from "./utilities/axisFormatters";
 
 const RADIUS = 4.5;
 const yAccessor = (d: ChartPoint) => d[1];
@@ -118,8 +118,9 @@ const yValueIsDefined = (v: ChartPoint) => yAccessor(v) !== undefined;
 
 class MultiLineChart
   extends React.Component<MultiLineChartProps>
-  implements AxisChart<'line'> {
-  static displayName = 'MultiLineChart';
+  implements AxisChart<"line">
+{
+  static displayName = "MultiLineChart";
 
   static defaultProps: Partial<MultiLineChartProps> = {
     rect: {
@@ -131,27 +132,30 @@ class MultiLineChart
     colors: COLORS,
     secondaryAxis: {
       show: true,
-      label: 'Time',
+      label: "Time",
       axisFormatter: durationSecondaryAxisFormatter,
       labelFormatter: SECONDARY_AXIS_LABEL_FORMATTER,
-      scale: 'linear',
+      scale: "linear",
       position: Position.LEFT,
       ticks: 5,
       mapDomain: IDENTITY,
     },
     primaryAxis: {
       show: true,
-      label: '',
-      axisFormatters: [formatAxisByBin(), formatMajorTicksByBin()] as Formatter<SVGGElement>[],
+      label: "",
+      axisFormatters: [
+        formatAxisByBin(),
+        formatMajorTicksByBin(),
+      ] as Formatter<SVGGElement>[],
       labelFormatter: NOOP,
       position: Position.BOTTOM,
     },
     duration: 0,
-    curve: 'monotone',
+    curve: "monotone",
     onRender: NOOP,
     showDots: false,
     classes: [],
-    emphasis: '',
+    emphasis: "",
     onMount: NOOP,
     staticVerticalMarkers: [],
     withArea: false,
@@ -251,10 +255,10 @@ class MultiLineChart
 
   get classList() {
     const { classes } = this.props;
-    return ['chart', 'multi-line-chart'].concat(classes).join(' ');
+    return ["chart", "multi-line-chart"].concat(classes).join(" ");
   }
 
-  axisTranslator(axisType: 'primaryAxis' | 'secondaryAxis') {
+  axisTranslator(axisType: "primaryAxis" | "secondaryAxis") {
     const {
       [axisType]: { position },
       x,
@@ -264,13 +268,13 @@ class MultiLineChart
     } = this;
     let dim = 0;
 
-    if (position === 'y') {
+    if (position === "y") {
       dim = y(0);
-    } else if (position === 'x') {
+    } else if (position === "x") {
       dim = x(0);
-    } else if (position === 'bottom') {
+    } else if (position === "bottom") {
       dim = height;
-    } else if (position === 'right') {
+    } else if (position === "right") {
       dim = width;
     }
 
@@ -307,15 +311,15 @@ class MultiLineChart
       primaryAxis: { position, axisFormatters },
     } = this;
 
-    this.x = d3Scale('linear').domain(xDomain(combinedData));
+    this.x = d3Scale("linear").domain(xDomain(combinedData));
     this.xAxis = d3Axis(position).scale(this.x).tickValues(xTicks);
-    this.xAxisGroup = graph.append('g').attr('class', 'x axis');
-    this.xAxisGroup.append('text').classed('label', true);
+    this.xAxisGroup = graph.append("g").attr("class", "x axis");
+    this.xAxisGroup.append("text").classed("label", true);
     axisFormatters.forEach((_, idx) => {
       this.xAxisGroup
-        .append('g')
+        .append("g")
         .classed(`axis-${idx + 1}`, true)
-        .classed('no-domain', idx > 0);
+        .classed("no-domain", idx > 0);
     });
   }
 
@@ -336,7 +340,7 @@ class MultiLineChart
     const { duration } = this.props;
 
     // Add axes
-    xAxisGroup.classed('hide', !show);
+    xAxisGroup.classed("hide", !show);
 
     const axisFormatPromises = [];
 
@@ -363,14 +367,14 @@ class MultiLineChart
         const offsetHeight =
           sum(axisTextHeights) - height - (idx > 0 ? AXIS_DOMAIN_HEIGHT : 0);
 
-        _xAxis.attr('transform', `translate(0, ${offsetHeight})`);
+        _xAxis.attr("transform", `translate(0, ${offsetHeight})`);
       });
     });
 
     // Add label
     const primaryAxisLabel = xAxisGroup
-      .select<SVGTextElement>('.label')
-      .classed('hide', !label)
+      .select<SVGTextElement>(".label")
+      .classed("hide", !label)
       .text(label);
     label && labelFormatter.call(this, primaryAxisLabel);
   }
@@ -389,8 +393,8 @@ class MultiLineChart
       .ticks(ticks)
       .tickSizeOuter(0)
       .tickPadding(10);
-    this.yAxisGroup = graph.append('g').attr('class', 'y axis');
-    this.yAxisGroup.append('g').classed('label', true).append('text');
+    this.yAxisGroup = graph.append("g").attr("class", "y axis");
+    this.yAxisGroup.append("g").classed("label", true).append("text");
   }
 
   renderSecondaryAxis() {
@@ -402,7 +406,7 @@ class MultiLineChart
     const { duration } = this.props;
 
     // Add axis
-    yAxisGroup.classed('hide', !show);
+    yAxisGroup.classed("hide", !show);
 
     const _yAxis = yAxisGroup.transition().duration(duration).call(yAxis);
 
@@ -410,9 +414,9 @@ class MultiLineChart
 
     // Add axis label
     const secondaryAxisLabel = yAxisGroup
-      .select<SVGGElement>('.label')
-      .classed('hide', !label);
-    secondaryAxisLabel.select('text').text(label);
+      .select<SVGGElement>(".label")
+      .classed("hide", !label);
+    secondaryAxisLabel.select("text").text(label);
     label && labelFormatter.call(this, secondaryAxisLabel);
   }
 
@@ -421,28 +425,28 @@ class MultiLineChart
     const { height, x } = this;
 
     const markers = this.markers
-      .selectAll('g.vertical-marker')
+      .selectAll("g.vertical-marker")
       .data(staticVerticalMarkers);
 
     const markerGroup = markers
       .enter()
-      .append('g')
-      .classed('vertical-marker', true)
-      .attr('data-vertical-marker', (d) => d)
-      .attr('transform', 'translate(0.5 0)');
+      .append("g")
+      .classed("vertical-marker", true)
+      .attr("data-vertical-marker", (d) => d)
+      .attr("transform", "translate(0.5 0)");
 
     markerGroup
-      .append('line')
-      .attr('x1', x)
-      .attr('y1', 0)
-      .attr('x2', x)
-      .attr('y2', height);
+      .append("line")
+      .attr("x1", x)
+      .attr("y1", 0)
+      .attr("x2", x)
+      .attr("y2", height);
 
     markerGroup
-      .append('circle')
-      .attr('cx', x)
-      .attr('cy', height)
-      .attr('r', 2.5);
+      .append("circle")
+      .attr("cx", x)
+      .attr("cy", height)
+      .attr("r", 2.5);
   }
 
   renderChart() {
@@ -473,13 +477,13 @@ class MultiLineChart
 
     // Create update selection
     const dataSelectionLines = graph
-      .select<SVGGElement>('g.paths')
-      .selectAll<SVGPathElement, LineData>('path')
+      .select<SVGGElement>("g.paths")
+      .selectAll<SVGPathElement, LineData>("path")
       .data<LineData>(data, ID_ER);
 
     const dataSelectionPoints = graph
-      .select<SVGGElement>('g.points-container')
-      .selectAll<SVGGElement, LineData>('g.points')
+      .select<SVGGElement>("g.points-container")
+      .selectAll<SVGGElement, LineData>("g.points")
       .data<LineData>(data, ID_ER);
 
     // Remove missing elements
@@ -487,15 +491,15 @@ class MultiLineChart
       .exit<LineData>()
       .transition()
       .duration(duration)
-      .attr('d', (d) => exitLine_er(d.values.map(([x]) => [x, 0])))
+      .attr("d", (d) => exitLine_er(d.values.map(([x]) => [x, 0])))
       .remove();
 
     const dataSelectionPointsExit = dataSelectionPoints.exit();
     dataSelectionPointsExit
-      .selectAll('circle')
+      .selectAll("circle")
       .transition()
       .duration(duration)
-      .attr('cy', exit_y(0));
+      .attr("cy", exit_y(0));
 
     // Delay is necessary in order to make circles animate downward before removal
     dataSelectionPointsExit.transition().delay(duration).remove();
@@ -504,68 +508,67 @@ class MultiLineChart
     dataSelectionLines
       .transition()
       .duration(duration)
-      .attr('d', (d) => line_er(d.values));
+      .attr("d", (d) => line_er(d.values));
 
     // Add new elements
     dataSelectionLines
       .enter()
-      .append('path')
-      .attr('fill', (d) => (withArea ? colorById(d) : 'none'))
-      .attr('stroke-width', 3)
-      .attr('stroke-linecap', 'round')
+      .append("path")
+      .attr("fill", (d) => (withArea ? colorById(d) : "none"))
+      .attr("stroke-width", 3)
+      .attr("stroke-linecap", "round")
       .each(function (d) {
-        this['_prior'] = {
+        this["_prior"] = {
           ...d,
           values: Array(d.values.length)
             .fill(0)
             .map((n, idx) => [d.values[idx][0], n]),
         };
 
-        this['_next'] = { ...d };
+        this["_next"] = { ...d };
       })
       .transition()
       .duration(duration)
-      .attrTween('d', INTERPOLATE_LINE(line_er))
+      .attrTween("d", INTERPOLATE_LINE(line_er))
       // Exit transition and go back to `enter` selection
       .selection()
       .merge(dataSelectionLines)
-      .attr('stroke', colorById);
+      .attr("stroke", colorById);
 
     const dataSelectionPointsEnter = dataSelectionPoints
       .enter()
-      .append('g')
-      .classed('points', true)
-      .attr('fill', colorById);
+      .append("g")
+      .classed("points", true)
+      .attr("fill", colorById);
 
     // Merge new and changed elements to combine logic
-    const dataSelectionPointsFull = dataSelectionPointsEnter.merge(
-      dataSelectionPoints
-    );
+    const dataSelectionPointsFull =
+      dataSelectionPointsEnter.merge(dataSelectionPoints);
 
     const circleGroupSelection = dataSelectionPointsFull
-      .selectAll('circle')
+      .selectAll("circle")
       .data((d: LineData) => d.values);
 
     circleGroupSelection
       .filter(yValueIsDefined)
       .transition()
       .duration(duration)
-      .attr('cx', x_er)
-      .attr('cy', y_er)
-      .attr('r', RADIUS);
+      .attr("cx", x_er)
+      .attr("cy", y_er)
+      .attr("r", RADIUS);
 
     circleGroupSelection
       .enter()
-      .append('circle')
+      .append("circle")
       .filter(yValueIsDefined)
       .each(function () {
-        this['_prior'] = [0, 0];
+        this["_prior"] = [0, 0];
       })
-      .attr('cx', x_er)
-      .attr('r', RADIUS)
+      .attr("cx", x_er)
+      .attr("r", RADIUS)
       .transition()
       .duration(duration)
-      .attrTween('cy', INTERPOLATE_POINT(y_er));
+      .attrTween("cy", INTERPOLATE_POINT(y_er));
 
     this.firstPaintHasHappened = true;
     this.rendering = false;
@@ -578,12 +581,12 @@ class MultiLineChart
     this.deEmphasize();
     svg
       .selectAll(`[data-key]:not([data-key="${key}"])`)
-      .attr('opacity', DE_EMPHASIS_OPACITY);
+      .attr("opacity", DE_EMPHASIS_OPACITY);
   }
 
   deEmphasize() {
     const { svg } = this;
-    svg.selectAll('[data-key]').attr('opacity', null);
+    svg.selectAll("[data-key]").attr("opacity", null);
   }
 
   onRender() {
@@ -654,7 +657,7 @@ class MultiLineChart
     const { graph, height } = this;
 
     this.y.range([height, 0]);
-    this.xAxisGroup.attr('transform', this.axisTranslator('primaryAxis'));
+    this.xAxisGroup.attr("transform", this.axisTranslator("primaryAxis"));
   }
 
   configureHorizontalSettings() {
@@ -678,27 +681,27 @@ class MultiLineChart
     }
 
     if (rectWidth && rectHeight) {
-      this.svg.attr('viewBox', `0 0 ${rectWidth} ${rectHeight}`);
+      this.svg.attr("viewBox", `0 0 ${rectWidth} ${rectHeight}`);
     }
   }
 
   componentDidMount() {
     const { colors, curve, margin, showDots } = this.props;
 
-    this.svg = select(this.chartRef.current).append('svg');
+    this.svg = select(this.chartRef.current).append("svg");
     this.graph = this.svg
-      .append('g')
-      .attr('transform', `translate(${margin.left}, ${margin.top})`);
+      .append("g")
+      .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     this.initializePrimaryAxis();
     this.initializeSecondaryAxis();
 
-    this.graph.append('g').classed('paths', true);
+    this.graph.append("g").classed("paths", true);
     this.graph
-      .append('g')
-      .classed('points-container', true)
-      .classed('togglable', true)
-      .classed('transparent', !showDots);
+      .append("g")
+      .classed("points-container", true)
+      .classed("togglable", true)
+      .classed("transparent", !showDots);
 
     this.colorScale = scaleOrdinal<string>().range(colors);
     this.line_er = line()
@@ -754,7 +757,7 @@ class MultiLineChart
     }
 
     if (rectWidth && rectHeight) {
-      svg.attr('viewBox', `0 0 ${rectWidth} ${rectHeight}`);
+      svg.attr("viewBox", `0 0 ${rectWidth} ${rectHeight}`);
     }
 
     if (data !== prevData) {
@@ -764,8 +767,8 @@ class MultiLineChart
       // two line-ing functions.
       const [oldXDomain, oldYDomain] = [x.domain(), y.domain()];
       const [oldXRange, oldYRange] = [x.range(), y.range()];
-      const exit_x = d3Scale('linear').domain(oldXDomain).range(oldXRange);
-      this.exit_y = d3Scale('linear')
+      const exit_x = d3Scale("linear").domain(oldXDomain).range(oldXRange);
+      this.exit_y = d3Scale("linear")
         .domain(oldYDomain as number[])
         .range(oldYRange);
       this.exitLine_er.x((d) => exit_x(d[0])).y((d) => this.exit_y(d[1]));
@@ -774,7 +777,7 @@ class MultiLineChart
       y.domain(yDomain(combinedData));
       xAxis.tickValues(this.xTicks);
 
-      xAxisGroup.attr('transform', this.axisTranslator('primaryAxis'));
+      xAxisGroup.attr("transform", this.axisTranslator("primaryAxis"));
     }
 
     if (colors !== prevColors) {
@@ -783,7 +786,7 @@ class MultiLineChart
     }
 
     if (showDots !== prevShowDots) {
-      graph.select('g.points-container').classed('transparent', !showDots);
+      graph.select("g.points-container").classed("transparent", !showDots);
     }
 
     if (this.shouldRenderChart(prevProps)) {

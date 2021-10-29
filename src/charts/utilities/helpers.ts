@@ -14,8 +14,8 @@ import {
   curveNatural,
   curveStep,
   curveBasis,
-} from 'd3';
-import { isFunction } from 'lodash';
+} from "d3";
+import { isFunction } from "lodash";
 import {
   PrimaryAxisPosition,
   Scale,
@@ -24,7 +24,7 @@ import {
   DomainMapper,
   Position,
   Domain,
-} from './types';
+} from "./types";
 
 const d3Axis = (dir: Position) => {
   switch (dir) {
@@ -59,19 +59,19 @@ const d3Scale = <T extends keyof Scale>(scaleType: T): Scale[T] => {
 
 const d3Curve = (curveType: Curve) => {
   switch (curveType) {
-    case 'linear':
+    case "linear":
       return curveLinear;
 
-    case 'monotone':
+    case "monotone":
       return curveMonotoneX;
 
-    case 'natural':
+    case "natural":
       return curveNatural;
 
-    case 'step':
+    case "step":
       return curveStep;
 
-    case 'basis':
+    case "basis":
       return curveBasis;
   }
 };
@@ -86,9 +86,9 @@ const swappedPositions = {
 };
 
 const positionalTranslations = {
-  left: () => 'translate(0, 0)',
+  left: () => "translate(0, 0)",
   right: (dim: number) => `translate(${dim}, 0)`,
-  top: () => 'translate(0, 0)',
+  top: () => "translate(0, 0)",
   bottom: (dim: number) => `translate(0, ${dim})`,
   y: (dim: number) => `translate(0, ${dim})`,
   x: (dim: number) => `translate(${dim}, 0)`,
@@ -130,10 +130,12 @@ const symmetricalDomain: DomainMapper = (domain) => {
  * @param {Array<number>} domain The domain to reshape
  * @returns {Array<number>}
  */
-const atLeastX = (x: number): DomainMapper => (domain) => {
-  const [min, max] = domain;
-  return [min, Math.max(max, x)];
-};
+const atLeastX =
+  (x: number): DomainMapper =>
+  (domain) => {
+    const [min, max] = domain;
+    return [min, Math.max(max, x)];
+  };
 
 /**
  * Ensures the upper value of a domain will be at least X if the domain is [0, 0].
@@ -143,11 +145,13 @@ const atLeastX = (x: number): DomainMapper => (domain) => {
  * @param {Array<number>} domain The domain to reshape
  * @returns {Array<number>}
  */
-const atLeastXWhenNothing = (x: number): DomainMapper => (domain) => {
-  const [min, max] = domain;
-  const newUpper = min === max && max === 0 ? x : max;
-  return [min, newUpper];
-};
+const atLeastXWhenNothing =
+  (x: number): DomainMapper =>
+  (domain) => {
+    const [min, max] = domain;
+    const newUpper = min === max && max === 0 ? x : max;
+    return [min, newUpper];
+  };
 
 /**
  * Ensures the lower value of a domain will never be below -100%.
@@ -287,7 +291,7 @@ const createTickValues = (domain: Domain, numTicks: number) => {
  * @param chartType
  * @returns
  */
-const flattenCompoundCharts = (chartType: 'line' | 'bar') => {
+const flattenCompoundCharts = (chartType: "line" | "bar") => {
   // TODO: improve type definition here after all the chart interfaces are created
   const ctxGetter = (chart) => {
     const {

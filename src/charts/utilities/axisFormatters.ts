@@ -6,18 +6,15 @@ import {
   Transitional,
   PrimaryAxisPosition,
   SecondaryAxisPosition,
-} from './types';
-import moment from 'moment';
-import {
-  tagRectVisibility,
-  getLargestContiguousSum,
-} from './helpers';
+} from "./types";
+import moment from "moment";
+import { tagRectVisibility, getLargestContiguousSum } from "./helpers";
 
-const dayFormat: any = (d) => moment(d * 1000).format('MMM DD');
+const dayFormat: any = (d) => moment(d * 1000).format("MMM DD");
 
 const shouldPrintDay = (ts: number) =>
   moment(ts * 1000)
-    .startOf('day')
+    .startOf("day")
     .unix() === ts;
 
 function secondaryAxisLabelSettings(
@@ -27,12 +24,12 @@ function secondaryAxisLabelSettings(
   left: number
 ) {
   const [rotation, x, y] =
-    position === 'right'
+    position === "right"
       ? [90, height / 2, -right * (3 / 4)]
       : [-90, -height / 2, -left * (3 / 4)];
-  const fontColor = 'black';
-  const fontSize = '130%';
-  const textAnchor = 'middle';
+  const fontColor = "black";
+  const fontSize = "130%";
+  const textAnchor = "middle";
 
   return { rotation, x, y, fontSize, fontColor, textAnchor };
 }
@@ -89,9 +86,9 @@ function hideCrowdedTicks(
       tagEveryNNodes = getLargestContiguousSum(hiddenRectsVector);
       primaryAxisTransition.nodes().forEach((node, idx) => {
         if (idx % (tagEveryNNodes + 1)) {
-          node.parentElement.classList.add('transparent');
+          node.parentElement.classList.add("transparent");
         } else {
-          node.parentElement.classList.remove('transparent');
+          node.parentElement.classList.remove("transparent");
         }
       });
     });
@@ -102,25 +99,25 @@ function PRIMARY_AXIS_FORMATTER(
   primaryAxis: Transitional<PrimaryAxisSelection>
 ) {
   const { isHorizontal } = this.props;
-  const tickText = primaryAxis.selectAll<SVGTextElement, number>('.tick text');
+  const tickText = primaryAxis.selectAll<SVGTextElement, number>(".tick text");
 
-  primaryAxis.selectAll('line').attr(isHorizontal ? 'y2' : 'x2', 0);
+  primaryAxis.selectAll("line").attr(isHorizontal ? "y2" : "x2", 0);
   tickText
-    .attr('text-anchor', isHorizontal ? 'end' : 'middle')
-    .attr('x', isHorizontal ? -10 : 0)
-    .attr('y', isHorizontal ? 3 : 17)
-    .attr('dy', '0');
+    .attr("text-anchor", isHorizontal ? "end" : "middle")
+    .attr("x", isHorizontal ? -10 : 0)
+    .attr("y", isHorizontal ? 3 : 17)
+    .attr("dy", "0");
 
   !isHorizontal && hideCrowdedTicks.call(this, tickText);
 }
 
 const formatMajorTicksByBin = () => {
-  const formatFn = (ts: number) => (shouldPrintDay(ts) ? dayFormat(ts) : '');
+  const formatFn = (ts: number) => (shouldPrintDay(ts) ? dayFormat(ts) : "");
 
   return function selectiveTimeSeriesAxisFormatter(
     primaryAxisTransition: Transitional<PrimaryAxisSelection>
   ) {
-    const tickText = primaryAxisTransition.selectAll('.tick text');
+    const tickText = primaryAxisTransition.selectAll(".tick text");
 
     tickText.text(formatFn);
 
@@ -129,14 +126,13 @@ const formatMajorTicksByBin = () => {
 };
 
 const formatAxisByBin = () => {
-  const formatFn = (d) => moment(d * 1000).format('ha');
+  const formatFn = (d) => moment(d * 1000).format("ha");
 
   return function timeSeriesAxisFormatter(
     primaryAxisTransition: PrimaryAxisSelection
   ) {
-    const tickText = primaryAxisTransition.selectAll<SVGTextElement, number>(
-      '.tick text'
-    );
+    const tickText =
+      primaryAxisTransition.selectAll<SVGTextElement, number>(".tick text");
 
     tickText.text(formatFn);
 
@@ -150,10 +146,10 @@ function PRIMARY_AXIS_LABEL_FORMATTER(
   const { width: axisWidth } = this;
 
   primaryAxisLabel
-    .attr('text-anchor', 'middle')
-    .attr('transform', `translate(${axisWidth / 2}, 50)`)
-    .attr('fill', 'black')
-    .attr('font-size', '100%');
+    .attr("text-anchor", "middle")
+    .attr("transform", `translate(${axisWidth / 2}, 50)`)
+    .attr("fill", "black")
+    .attr("font-size", "100%");
 }
 
 // Secondary axis formatters
@@ -165,17 +161,17 @@ function SECONDARY_AXIS_FORMATTER(
     secondaryAxis: { position },
   } = this;
 
-  const [x, textAnchor] = position === 'right' ? [10, 'start'] : [-10, 'end'];
+  const [x, textAnchor] = position === "right" ? [10, "start"] : [-10, "end"];
 
-  secondaryAxis.selectAll('line').attr(isHorizontal ? 'x2' : 'y2', 0);
+  secondaryAxis.selectAll("line").attr(isHorizontal ? "x2" : "y2", 0);
   secondaryAxis
-    .selectAll<SVGGElement, number>('.tick')
-    .attr('data-tick', (d) => d)
-    .select('text')
-    .attr('x', isHorizontal ? 0 : x)
-    .attr('y', 0)
-    .attr('dy', isHorizontal ? '1.25em' : '0.32em')
-    .attr('text-anchor', isHorizontal ? 'middle' : textAnchor);
+    .selectAll<SVGGElement, number>(".tick")
+    .attr("data-tick", (d) => d)
+    .select("text")
+    .attr("x", isHorizontal ? 0 : x)
+    .attr("y", 0)
+    .attr("dy", isHorizontal ? "1.25em" : "0.32em")
+    .attr("text-anchor", isHorizontal ? "middle" : textAnchor);
 }
 
 function SECONDARY_AXIS_ALT_XPOS_FORMATTER(
@@ -185,8 +181,8 @@ function SECONDARY_AXIS_ALT_XPOS_FORMATTER(
   const {
     secondaryAxis: { position },
   } = this;
-  const x = position === 'right' ? 5 : -5;
-  secondaryAxis.selectAll('.tick text').attr('x', isHorizontal ? 0 : x);
+  const x = position === "right" ? 5 : -5;
+  secondaryAxis.selectAll(".tick text").attr("x", isHorizontal ? 0 : x);
 }
 
 // function numericSecondaryAxisFormatter(secondaryAxis: Transitional<SecondaryAxisSelection>) {
@@ -211,26 +207,26 @@ const DURATION_CONVERSION = Object.freeze({
 });
 
 const options = {
-  style: 'unit',
-  unitDisplay: 'narrow',
+  style: "unit",
+  unitDisplay: "narrow",
   minimumFractionDigits: 0,
   maximumFractionDigits: 2,
 };
-const hourNumberFormatter = new Intl.NumberFormat('en-US', {
+const hourNumberFormatter = new Intl.NumberFormat("en-US", {
   ...options,
-  unit: 'hour',
+  unit: "hour",
 }).format;
-const minuteNumberFormatter = new Intl.NumberFormat('en-US', {
+const minuteNumberFormatter = new Intl.NumberFormat("en-US", {
   ...options,
-  unit: 'minute',
+  unit: "minute",
 }).format;
-const secondNumberFormatter = new Intl.NumberFormat('en-US', {
+const secondNumberFormatter = new Intl.NumberFormat("en-US", {
   ...options,
-  unit: 'second',
+  unit: "second",
 }).format;
-const millisecondNumberFormatter = new Intl.NumberFormat('en-US', {
+const millisecondNumberFormatter = new Intl.NumberFormat("en-US", {
   ...options,
-  unit: 'millisecond',
+  unit: "millisecond",
 }).format;
 
 const formatDuration = (duration) => {
@@ -254,7 +250,7 @@ function durationSecondaryAxisFormatter(
 ) {
   SECONDARY_AXIS_FORMATTER.call(this, secondaryAxis);
   secondaryAxis
-    .selectAll<SVGTextElement, number>('.tick text')
+    .selectAll<SVGTextElement, number>(".tick text")
     .text((n) => formatDuration(n));
 }
 
@@ -279,25 +275,19 @@ function SECONDARY_AXIS_LABEL_FORMATTER(
     secondaryAxis: { position },
   } = this;
 
-  const {
-    rotation,
-    x,
-    y,
-    fontSize,
-    fontColor,
-    textAnchor,
-  } = secondaryAxisLabelSettings(position, height, right, left);
+  const { rotation, x, y, fontSize, fontColor, textAnchor } =
+    secondaryAxisLabelSettings(position, height, right, left);
 
   // format the label's text
   secondaryAxisLabel
-    .select('text')
-    .attr('text-anchor', textAnchor)
-    .attr('fill', fontColor)
-    .attr('font-size', fontSize);
+    .select("text")
+    .attr("text-anchor", textAnchor)
+    .attr("fill", fontColor)
+    .attr("font-size", fontSize);
 
   // position the entire label
   secondaryAxisLabel.attr(
-    'transform',
+    "transform",
     `rotate(${rotation}) translate(${x},${y})`
   );
 }
@@ -309,7 +299,7 @@ const secondaryAxisLabelWithDotFormatter = (keyColor: string) => {
     SECONDARY_AXIS_LABEL_FORMATTER.call(this, secondaryAxisLabel);
 
     const textNodeHeight = secondaryAxisLabel
-      .select<SVGTextElement>('text')
+      .select<SVGTextElement>("text")
       .node()
       .getBoundingClientRect().height;
 
@@ -319,13 +309,13 @@ const secondaryAxisLabelWithDotFormatter = (keyColor: string) => {
     const dotVOffset = -4; // the vertical offset of the dot
 
     //the view renders many times, and we want to work on the existing circle, not make a new one each time
-    const updateCircle = secondaryAxisLabel.selectAll('circle').data([1]); //tell d3 to keep circle 1, if it exists yet
-    const enterCircle = updateCircle.enter().append('circle').attr('r', 5); //select any non-existent circle and create it
+    const updateCircle = secondaryAxisLabel.selectAll("circle").data([1]); //tell d3 to keep circle 1, if it exists yet
+    const enterCircle = updateCircle.enter().append("circle").attr("r", 5); //select any non-existent circle and create it
     updateCircle.exit().remove(); //select any existing circles not in the data (rogue circles) and remove to keep the data consistent with browser display
     updateCircle
       .merge(enterCircle)
-      .attr('transform', `translate(${dotHOffset}, ${dotVOffset})`)
-      .attr('fill', keyColor); //manipulate any update or enter selections
+      .attr("transform", `translate(${dotHOffset}, ${dotVOffset})`)
+      .attr("fill", keyColor); //manipulate any update or enter selections
   };
 };
 

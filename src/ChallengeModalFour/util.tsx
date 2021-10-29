@@ -9,12 +9,8 @@ const patterns = {
  * For example: 127.0.0.1/16
  */
 export const isValidCidr = (cidr: string): boolean => {
-  let [ip, block, ...otherParts] = cidr.split("/");
+  let [ip, block] = cidr.split("/");
 
-  // There should only be 2 segments
-  if (otherParts.length) {
-    return false;
-  }
   const parsedBlock = parseInt(block);
 
   return (
