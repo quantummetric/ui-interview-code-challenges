@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import "./challenge.scss";
 import QuantumMetricLogo from "./QuantumMetricLogo.svg";
-import ChallengeModalOne from "./ChallengeModalOne";
-import ChallengeModalTwo from "./ChallengeModalTwo";
-import ChallengeModalThree from "./ChallengeModalThree";
-import ChallengeModalFour from "./ChallengeModalFour";
+import ChallengeModal01 from "./ChallengeModal01";
+import ChallengeModal02 from "./ChallengeModal02";
+import ChallengeModal03 from "./ChallengeModal03";
+import ChallengeModal04 from "./ChallengeModal04";
 
 const modals = [
-  ChallengeModalOne,
-  ChallengeModalTwo,
-  ChallengeModalThree,
-  ChallengeModalFour,
+  ChallengeModal01,
+  ChallengeModal02,
+  ChallengeModal03,
+  ChallengeModal04,
 ];
 
 const Challenge = () => {
@@ -32,7 +32,7 @@ const Challenge = () => {
                 className="cta-button"
                 onClick={() => setCurrentModal(idx)}
               >
-                Open Challenge {idx + 1}
+                Open Challenge {`${idx + 1}`.padStart(2, "0")}
               </button>
               <Modal isOpen={currentModal === idx} onClose={onClose} />
             </React.Fragment>
