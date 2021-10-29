@@ -25,7 +25,9 @@ const ChallengeModalThree: React.FC<IProps> = React.memo((props) => {
       </div>
       <div className="modal-content">I'm also an empty modal.</div>
       <div className="submit-button-group">
-        <button className="create-button">Submit</button>
+        <button className="create-button" onClick={onClose}>
+          Submit
+        </button>
         <button className="cancel-button" onClick={onClose}>
           Cancel
         </button>
