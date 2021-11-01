@@ -15,7 +15,7 @@ export const isValidCidr = (cidr: string): boolean => {
 
   return (
     ip &&
-    parsedBlock &&
+    !Number.isNaN(parsedBlock) &&
     patterns.ip.test(ip) &&
     (parsedBlock >= 0 || parsedBlock <= 32)
   );

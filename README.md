@@ -17,7 +17,7 @@ To prepare the application, run:
 ```
 $ git clone <the provided repository url>.git
 $ cd <the repository name>
-$ npm ci
+$ npm i
 $ npm run build
 ```
 
@@ -29,16 +29,16 @@ $ npm run start
 
 This will start a local ui server on [localhost:3000](http://localhost:3000) and an API server on [localhost:8080](http://localhost:8080). If you run into issues starting the servers, make sure you do not have any other applications running and listening on those ports.
 
-The application will hotload the changes you make as you save, so refreshing the view may not even be necessary (and hopefully we won't need to start and stop the server between changes).
+The application will recompile the changes you make as you save and should auto-refresh (and hopefully we won't need to start and stop the server between changes).
 
 ## The Challenges
 
 The challenges will be selected by your interviewer or interview panel from the below. Each tests a variety of skills we actually use every day. This will help us to better evaluate you current technical understanding.
 
-- Challenge Modal 1 - APIs and Transformations
-- Challenge Modal 2 - React and CSS
-- Challenge Modal 3 - State Management
-- Challenge Modal 4 - Debugging
+- [Challenge Modal 1 - APIs and Transformations](./-/tree/main/src/ChallengeModal01)
+- [Challenge Modal 2 - React and CSS](./-/tree/main/src/ChallengeModal02)
+- [Challenge Modal 3 - State Management](./-/tree/main/src/ChallengeModal03)
+- [Challenge Modal 4 - Debugging](./-/tree/main/src/ChallengeModal04)
 
 ## Tips
 
