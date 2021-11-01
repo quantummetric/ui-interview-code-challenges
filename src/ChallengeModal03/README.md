@@ -4,4 +4,4 @@
 
 Two of the settings are simple settings in which there is simply a text field mapped to a key. The last settings has an additional control to generate a uuid and place it into the text box.
 
-![Image for Challenge Modal 03, Challenge A](./-/tree/main/images/03-A.png)
+![Image for Challenge Modal 03, Challenge A](./images/03-A.png)

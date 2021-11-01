@@ -35,10 +35,10 @@ The application will recompile the changes you make as you save and should auto-
 
 The challenges will be selected by your interviewer or interview panel from the below. Each tests a variety of skills we actually use every day. This will help us to better evaluate you current technical understanding.
 
-- [Challenge Modal 1 - APIs and Transformations](./-/tree/main/src/ChallengeModal01)
-- [Challenge Modal 2 - React and CSS](./-/tree/main/src/ChallengeModal02)
-- [Challenge Modal 3 - State Management](./-/tree/main/src/ChallengeModal03)
-- [Challenge Modal 4 - Debugging](./-/tree/main/src/ChallengeModal04)
+- [Challenge Modal 1 - APIs and Transformations](./src/ChallengeModal01)
+- [Challenge Modal 2 - React and CSS](./src/ChallengeModal02)
+- [Challenge Modal 3 - State Management](./src/ChallengeModal03)
+- [Challenge Modal 4 - Debugging](./src/ChallengeModal04)
 
 ## Tips
 
