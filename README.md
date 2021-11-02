@@ -10,7 +10,7 @@ In order to save time, please make sure to install:
 
 - A software IDE of your choice. Many people here enjoy [VSCode](https://code.visualstudio.com/download).
 - [Git](https://git-scm.com/downloads)
-- [Node.js + NPM](https://nodejs.org/en/)
+- [Node.js + NPM](https://nodejs.org/en/) **This was last run with Node v16.13.0**
 
 To prepare the application, run:
 
