@@ -14,7 +14,7 @@ Using the `unformattedApi` route variable, fetch unformatted data and shape it t
 
 ## Challenge C: Deal with unstable endpoint
 
-The `unformattedApiWithErrors` route variable targets an unstable route which will randomly return 500s. Targeting this route, update the fetch functions to retry the data fetch if an error occurs.
+The `unformattedApiWithFailure` route variable targets an unstable route which will randomly return 500s. Targeting this route, update the fetch functions to retry the data fetch if an error occurs.
 
 ## Challenge D: Add chart legend
 
