@@ -1,23 +1,27 @@
 import { QueryResult } from "./../charts/utilities/types";
 import { LineData } from "../charts/utilities/types";
 
-/* Query Result Data structure
-
-dimensions: [timestamp],
-measure: [
-  app_cache
-  dns
-  tcp
-  request
-  response
-  processing
-  load
+/* Unformatted Data Structure
+[
+  {
+    dimensions: [timestamp],
+    measures: [
+      app_cache
+      dns
+      tcp
+      request
+      response
+      processing
+      load
+    ]
+  }
 ]
-
 */
 
 /* Chart Data Structure
 
+[
+  {
     id: 'app_cache',
     text: 'app_cache',
     values: [
@@ -27,7 +31,8 @@ measure: [
       [timestamp, value],
       ...,
     ]
-
+  }
+]
 */
 
 // ANSWERS
