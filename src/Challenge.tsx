@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import "./challenge.scss";
 import QuantumMetricLogo from "./QuantumMetricLogo.svg";
-import ChallengeModal01 from "./ChallengeModal01";
-import ChallengeModal02 from "./ChallengeModal02";
-import ChallengeModal03 from "./ChallengeModal03";
-import ChallengeModal04 from "./ChallengeModal04";
+import DataViz from "./challenges/DataViz";
+import Alerts from "./challenges/Alerts";
+import Settings from "./challenges/Settings";
+import DataValidation from "./challenges/DataValidation";
+import MouseMove from "./challenges/Performance/MouseMove";
+import NameSearch from "./challenges/Performance/NameSearch";
 
 const modals = [
-  ChallengeModal01,
-  ChallengeModal02,
-  ChallengeModal03,
-  ChallengeModal04,
+  DataViz,
+  Alerts,
+  Settings,
+  DataValidation,
+  MouseMove,
+  NameSearch,
 ];
 
 const Challenge = () => {
@@ -29,7 +33,7 @@ const Challenge = () => {
           return (
             <React.Fragment key={Modal.displayName}>
               <button
-                className="cta-button"
+                className="btn primary-btn cta-button"
                 onClick={() => setCurrentModal(idx)}
               >
                 Open Challenge {`${idx + 1}`.padStart(2, "0")}

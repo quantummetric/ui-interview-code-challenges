@@ -9,7 +9,7 @@ interface IProps {
   onClose: () => void;
 }
 
-const ChallengeModal04: React.FC<IProps> = React.memo((props) => {
+const DataValidation: React.FC<IProps> = React.memo((props) => {
   const { isOpen, onClose } = props;
 
   const modalClasses = classnames("challenge-modal", {
@@ -51,8 +51,8 @@ const ChallengeModal04: React.FC<IProps> = React.memo((props) => {
   return (
     <div className={modalClasses}>
       <div className="modal-header">
-        <span className="modal-title">QM Challenge Modal 04</span>
-        <button className="close-button" onClick={() => onClose}>
+        <span className="modal-title">QM Challenge: Data Validation</span>
+        <button className="close-button" onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
       </div>
@@ -60,10 +60,10 @@ const ChallengeModal04: React.FC<IProps> = React.memo((props) => {
         <CIDRValidation values={values} />
       </div>
       <div className="submit-button-group">
-        <button className="create-button" onClick={() => onClose}>
+        <button className="btn primary-btn" onClick={onClose}>
           Submit
         </button>
-        <button className="cancel-button" onClick={() => onClose}>
+        <button className="btn secondary-btn" onClick={onClose}>
           Cancel
         </button>
       </div>
@@ -71,5 +71,5 @@ const ChallengeModal04: React.FC<IProps> = React.memo((props) => {
   );
 });
 
-ChallengeModal04.displayName = "ChallengeModal04";
-export default ChallengeModal04;
+DataValidation.displayName = "DataValidation";
+export default DataValidation;

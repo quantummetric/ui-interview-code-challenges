@@ -8,9 +8,7 @@ interface IProps {
   onClose: () => void;
 }
 
-const alertApi = "http://localhost:8080/api/getAlertData";
-
-const ChallengeModal02: React.FC<IProps> = React.memo((props) => {
+const Settings: React.FC<IProps> = React.memo((props) => {
   const { isOpen, onClose } = props;
 
   const modalClasses = classnames("challenge-modal", {
@@ -20,17 +18,17 @@ const ChallengeModal02: React.FC<IProps> = React.memo((props) => {
   return (
     <div className={modalClasses}>
       <div className="modal-header">
-        <span className="modal-title">QM Challenge Modal 02</span>
+        <span className="modal-title">QM Challenge: Settings</span>
         <button className="close-button" onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
       </div>
-      <div className="modal-content">I'm a modal with no content</div>
+      <div className="modal-content">I'm also an empty modal.</div>
       <div className="submit-button-group">
-        <button className="create-button" onClick={onClose}>
+        <button className="btn primary-btn" onClick={onClose}>
           Submit
         </button>
-        <button className="cancel-button" onClick={onClose}>
+        <button className="btn secondary-btn" onClick={onClose}>
           Cancel
         </button>
       </div>
@@ -38,5 +36,5 @@ const ChallengeModal02: React.FC<IProps> = React.memo((props) => {
   );
 });
 
-ChallengeModal02.displayName = "ChallengeModalTwo02";
-export default ChallengeModal02;
+Settings.displayName = "Settings";
+export default Settings;
