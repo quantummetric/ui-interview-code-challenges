@@ -1,4 +1,4 @@
-# Name Search
+# Challenge Modal 06
 
 This modal displays a list of users and some information about each one. In its current implementation, performance is very poor.
 

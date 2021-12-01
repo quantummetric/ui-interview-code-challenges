@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import "./challenge.scss";
 import QuantumMetricLogo from "./QuantumMetricLogo.svg";
-import DataViz from "./challenges/DataViz";
-import Alerts from "./challenges/Alerts";
-import Settings from "./challenges/Settings";
-import DataValidation from "./challenges/DataValidation";
-import MouseMove from "./challenges/Performance/MouseMove";
-import NameSearch from "./challenges/Performance/NameSearch";
+import ChallengeModal01 from "./ChallengeModal01";
+import ChallengeModal02 from "./ChallengeModal02";
+import ChallengeModal03 from "./ChallengeModal03";
+import ChallengeModal04 from "./ChallengeModal04";
+import ChallengeModal05 from "./ChallengeModal05";
+import ChallengeModal06 from "./ChallengeModal06";
 
 const modals = [
-  DataViz,
-  Alerts,
-  Settings,
-  DataValidation,
-  MouseMove,
-  NameSearch,
+  ChallengeModal01,
+  ChallengeModal02,
+  ChallengeModal03,
+  ChallengeModal04,
+  ChallengeModal05,
+  ChallengeModal06,
 ];
 
 const Challenge = () => {

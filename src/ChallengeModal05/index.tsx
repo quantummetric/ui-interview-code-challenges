@@ -9,7 +9,7 @@ interface IProps {
   onClose: () => void;
 }
 
-const Async: React.FC<IProps> = React.memo((props) => {
+const ChallengeModal05: React.FC<IProps> = React.memo((props) => {
   const { isOpen, onClose } = props;
   const [showMousePosition, setShowMousePosition] = useState(false);
 
@@ -24,7 +24,7 @@ const Async: React.FC<IProps> = React.memo((props) => {
   return (
     <div className={modalClasses}>
       <div className="modal-header">
-        <span className="modal-title">QM Challenge: Mouse Move</span>
+        <span className="modal-title">QM Challenge Modal 05</span>
         <button className="close-button" onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
@@ -47,5 +47,5 @@ const Async: React.FC<IProps> = React.memo((props) => {
   );
 });
 
-Async.displayName = "Async";
-export default Async;
+ChallengeModal05.displayName = "ChallengeModal05";
+export default ChallengeModal05;

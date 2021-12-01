@@ -8,9 +8,7 @@ interface IProps {
   onClose: () => void;
 }
 
-const alertApi = "http://localhost:8080/api/getAlertData";
-
-const Alerts: React.FC<IProps> = React.memo((props) => {
+const ChallengeModal03: React.FC<IProps> = React.memo((props) => {
   const { isOpen, onClose } = props;
 
   const modalClasses = classnames("challenge-modal", {
@@ -20,12 +18,12 @@ const Alerts: React.FC<IProps> = React.memo((props) => {
   return (
     <div className={modalClasses}>
       <div className="modal-header">
-        <span className="modal-title">QM Challenge: Alerts</span>
+        <span className="modal-title">QM Challenge Modal 03</span>
         <button className="close-button" onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
       </div>
-      <div className="modal-content">I'm a modal with no content</div>
+      <div className="modal-content">I'm also an empty modal.</div>
       <div className="submit-button-group">
         <button className="btn primary-btn" onClick={onClose}>
           Submit
@@ -38,5 +36,5 @@ const Alerts: React.FC<IProps> = React.memo((props) => {
   );
 });
 
-Alerts.displayName = "Alerts";
-export default Alerts;
+ChallengeModal03.displayName = "ChallengeModal03";
+export default ChallengeModal03;

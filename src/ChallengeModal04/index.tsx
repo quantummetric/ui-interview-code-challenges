@@ -9,7 +9,7 @@ interface IProps {
   onClose: () => void;
 }
 
-const DataValidation: React.FC<IProps> = React.memo((props) => {
+const ChallengeModal04: React.FC<IProps> = React.memo((props) => {
   const { isOpen, onClose } = props;
 
   const modalClasses = classnames("challenge-modal", {
@@ -51,7 +51,7 @@ const DataValidation: React.FC<IProps> = React.memo((props) => {
   return (
     <div className={modalClasses}>
       <div className="modal-header">
-        <span className="modal-title">QM Challenge: Data Validation</span>
+        <span className="modal-title">QM Challenge Modal 04</span>
         <button className="close-button" onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
@@ -71,5 +71,5 @@ const DataValidation: React.FC<IProps> = React.memo((props) => {
   );
 });
 
-DataValidation.displayName = "DataValidation";
-export default DataValidation;
+ChallengeModal04.displayName = "ChallengeModal04";
+export default ChallengeModal04;

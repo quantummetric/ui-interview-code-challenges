@@ -2,48 +2,15 @@ import React, { useState } from "react";
 import classnames from "classnames";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ValidIcon from "../../../ValidIcon";
 import names, { Name } from "./names";
+import NameRow from './NameRow';
 
 type Props = {
   isOpen: boolean;
   onClose: () => void;
 };
 
-type NameRowProps = {
-  name: string;
-  isMember: boolean;
-  isSubscribed: boolean;
-  onClickRow: (name: string) => void;
-  isActive: boolean;
-};
-
-const NameRow: React.FC<NameRowProps> = ({
-  name,
-  isMember,
-  isSubscribed,
-  onClickRow,
-  isActive,
-}) => {
-  const rowClasses = classnames("name-row", { active: isActive });
-  return (
-    <div className={rowClasses} key={name} onClick={() => onClickRow(name)}>
-      <p>{name}</p>
-      <div className="name-data">
-        <div className="is-member">
-          <p>Is Member: </p>
-          <ValidIcon isValid={isMember} />
-        </div>
-        <div className="is-subscribed">
-          <p>Is Subscribed: </p>
-          <ValidIcon isValid={isSubscribed} />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const NameSearch: React.FC<Props> = (props) => {
+const ChallengeModal06: React.FC<Props> = (props) => {
   const { isOpen, onClose } = props;
   const [nameToSearch, setNameToSearch] = useState<string>("");
   const [filteredNames, setFilteredNames] = useState<Name[]>(names);
@@ -72,7 +39,7 @@ const NameSearch: React.FC<Props> = (props) => {
   return (
     <div className={modalClasses}>
       <div className="modal-header">
-        <span className="modal-title">QM Challenge: Name Search</span>
+        <span className="modal-title">QM Challenge Modal 06</span>
         <button className="close-button" onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
@@ -104,5 +71,5 @@ const NameSearch: React.FC<Props> = (props) => {
   );
 };
 
-NameSearch.displayName = "NameSearch";
-export default NameSearch;
+ChallengeModal06.displayName = "ChallengeModal06";
+export default ChallengeModal06;
