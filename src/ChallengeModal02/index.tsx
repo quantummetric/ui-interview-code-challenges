@@ -27,10 +27,10 @@ const ChallengeModal02: React.FC<IProps> = React.memo((props) => {
       </div>
       <div className="modal-content">I'm a modal with no content</div>
       <div className="submit-button-group">
-        <button className="create-button" onClick={onClose}>
+        <button className="btn primary-btn" onClick={onClose}>
           Submit
         </button>
-        <button className="cancel-button" onClick={onClose}>
+        <button className="btn secondary-btn" onClick={onClose}>
           Cancel
         </button>
       </div>
@@ -38,5 +38,5 @@ const ChallengeModal02: React.FC<IProps> = React.memo((props) => {
   );
 });
 
-ChallengeModal02.displayName = "ChallengeModalTwo02";
+ChallengeModal02.displayName = "ChallengeModal02";
 export default ChallengeModal02;

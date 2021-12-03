@@ -55,10 +55,10 @@ const ChallengeModal01: React.FC<IProps> = React.memo((props) => {
         {/* <VerticallySignificantContent /> */}
       </div>
       <div className="submit-button-group">
-        <button className="create-button" onClick={onClose}>
+        <button className="btn primary-btn" onClick={onClose}>
           Submit
         </button>
-        <button className="cancel-button" onClick={onClose}>
+        <button className="btn secondary-btn" onClick={onClose}>
           Cancel
         </button>
       </div>

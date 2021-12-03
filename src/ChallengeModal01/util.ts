@@ -1,4 +1,4 @@
-import { QueryResult } from "./../charts/utilities/types";
+import { QueryResult } from "../charts/utilities/types";
 import { LineData } from "../charts/utilities/types";
 
 /* Unformatted Data Structure

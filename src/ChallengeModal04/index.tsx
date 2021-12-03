@@ -52,7 +52,7 @@ const ChallengeModal04: React.FC<IProps> = React.memo((props) => {
     <div className={modalClasses}>
       <div className="modal-header">
         <span className="modal-title">QM Challenge Modal 04</span>
-        <button className="close-button" onClick={() => onClose}>
+        <button className="close-button" onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
       </div>
@@ -60,10 +60,10 @@ const ChallengeModal04: React.FC<IProps> = React.memo((props) => {
         <CIDRValidation values={values} />
       </div>
       <div className="submit-button-group">
-        <button className="create-button" onClick={() => onClose}>
+        <button className="btn primary-btn" onClick={onClose}>
           Submit
         </button>
-        <button className="cancel-button" onClick={() => onClose}>
+        <button className="btn secondary-btn" onClick={onClose}>
           Cancel
         </button>
       </div>

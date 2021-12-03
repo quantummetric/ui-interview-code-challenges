@@ -1,5 +1,5 @@
 import React from "react";
-import ValidIcon from "./ValidIcon";
+import ValidIcon from "../ValidIcon";
 import { isValidCidr } from "./util";
 
 type CIDRValue = {

@@ -39,6 +39,8 @@ The challenges will be selected by your interviewer or interview panel from the 
 - [Challenge Modal 2 - React and CSS](./src/ChallengeModal02)
 - [Challenge Modal 3 - State Management](./src/ChallengeModal03)
 - [Challenge Modal 4 - Debugging](./src/ChallengeModal04)
+- [Challenge Modal 5 - Memory Leaks](./src/ChallengeModal05)
+- [Challenge Modal 6 - Performance](./src/ChallengeModal06)
 
 ## Tips
 

@@ -5,12 +5,16 @@ import ChallengeModal01 from "./ChallengeModal01";
 import ChallengeModal02 from "./ChallengeModal02";
 import ChallengeModal03 from "./ChallengeModal03";
 import ChallengeModal04 from "./ChallengeModal04";
+import ChallengeModal05 from "./ChallengeModal05";
+import ChallengeModal06 from "./ChallengeModal06";
 
 const modals = [
   ChallengeModal01,
   ChallengeModal02,
   ChallengeModal03,
   ChallengeModal04,
+  ChallengeModal05,
+  ChallengeModal06,
 ];
 
 const Challenge = () => {
@@ -29,7 +33,7 @@ const Challenge = () => {
           return (
             <React.Fragment key={Modal.displayName}>
               <button
-                className="cta-button"
+                className="btn primary-btn cta-button"
                 onClick={() => setCurrentModal(idx)}
               >
                 Open Challenge {`${idx + 1}`.padStart(2, "0")}

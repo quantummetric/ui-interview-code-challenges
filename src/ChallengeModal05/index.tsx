@@ -1,29 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import classnames from "classnames";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import MousePosition from "./MousePosition";
 
 interface IProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const ChallengeModal03: React.FC<IProps> = React.memo((props) => {
+const ChallengeModal05: React.FC<IProps> = React.memo((props) => {
   const { isOpen, onClose } = props;
+  const [showMousePosition, setShowMousePosition] = useState(false);
 
   const modalClasses = classnames("challenge-modal", {
     "is-open": isOpen,
   });
 
+  const toggleShowMousePosition = () => {
+    setShowMousePosition(!showMousePosition);
+  };
+
   return (
     <div className={modalClasses}>
       <div className="modal-header">
-        <span className="modal-title">QM Challenge Modal 03</span>
+        <span className="modal-title">QM Challenge Modal 05</span>
         <button className="close-button" onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
       </div>
-      <div className="modal-content">I'm also an empty modal.</div>
+      <div className="modal-content">
+        {showMousePosition && <MousePosition />}
+        <button className="btn primary-btn" onClick={toggleShowMousePosition}>
+          {showMousePosition ? 'Hide Mouse Position' : 'Show Mouse Position'}
+        </button>
+      </div>
       <div className="submit-button-group">
         <button className="btn primary-btn" onClick={onClose}>
           Submit
@@ -36,5 +47,5 @@ const ChallengeModal03: React.FC<IProps> = React.memo((props) => {
   );
 });
 
-ChallengeModal03.displayName = "ChallengeModal03";
-export default ChallengeModal03;
+ChallengeModal05.displayName = "ChallengeModal05";
+export default ChallengeModal05;
