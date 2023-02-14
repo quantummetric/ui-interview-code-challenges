@@ -18,7 +18,7 @@ const modals = [
 ];
 
 const Challenge = () => {
-  const [currentModal, setCurrentModal] = useState(null);
+  const [currentModal, setCurrentModal] = useState<number | null>(null);
 
   const onClose = () => {
     setCurrentModal(null);
@@ -28,8 +28,8 @@ const Challenge = () => {
     <>
       <div className="welcome-content">
         <img src={QuantumMetricLogo} className="logo" alt="logo" />
-        {modals.map((modal, idx) => {
-          const Modal = modal;
+        {modals.map((Modal, idx) => {
+          const isOpen = currentModal === idx;
           return (
             <React.Fragment key={Modal.displayName}>
               <button
@@ -38,7 +38,9 @@ const Challenge = () => {
               >
                 Open Challenge {`${idx + 1}`.padStart(2, "0")}
               </button>
-              <Modal isOpen={currentModal === idx} onClose={onClose} />
+              {isOpen && (
+                <Modal isOpen={currentModal === idx} onClose={onClose} />
+              )}
             </React.Fragment>
           );
         })}

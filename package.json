@@ -1,61 +1,35 @@
 {
-  "name": "code-challenge",
-  "version": "1.0.0",
+  "name": "ui-interview-code-challenges",
   "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.34",
-    "@fortawesome/free-solid-svg-icons": "^5.15.2",
-    "@fortawesome/react-fontawesome": "^0.1.14",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/classnames": "^2.2.11",
-    "@types/d3": "^6.3.0",
-    "@types/express": "^4.17.11",
-    "@types/jest": "^26.0.15",
-    "@types/lodash": "^4.14.168",
-    "@types/moment": "^2.13.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.53",
-    "@types/react-dom": "^16.9.8",
-    "classnames": "^2.2.6",
-    "concurrently": "^6.0.0",
-    "d3": "^6.5.0",
-    "express": "^4.17.1",
-    "lodash": "^4.17.20",
-    "moment": "^2.29.1",
-    "node-sass": "^6.0.1",
-    "nodemon": "^2.0.7",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.3",
-    "typescript": "^4.0.3",
-    "web-vitals": "^0.2.4"
-  },
+  "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "start": "concurrently \"npm:start-react\" \"npm:server\"",
-    "start-react": "react-scripts start",
-    "server": "tsc server/server.ts && nodemon server/server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "concurrently 'vite' 'node ./server/server.js'",
+    "dev:ui": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "classnames": "^2.3.2",
+    "d3": "^7.8.2",
+    "express": "^4.18.2",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@types/d3": "^7.4.0",
+    "@types/express": "^4.17.17",
+    "@types/lodash": "^4.14.191",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "concurrently": "^7.6.0",
+    "sass": "^1.58.0",
+    "typescript": "^4.9.3"
   }
 }

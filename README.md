@@ -18,13 +18,12 @@ To prepare the application, run:
 $ git clone <the provided repository url>.git
 $ cd <the repository name>
 $ npm i
-$ npm run build
 ```
 
 To run the application, we use
 
 ```
-$ npm run start
+$ npm run dev
 ```
 
 This will start a local ui server on [localhost:3000](http://localhost:3000) and an API server on [localhost:8080](http://localhost:8080). If you run into issues starting the servers, make sure you do not have any other applications running and listening on those ports.
