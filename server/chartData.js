@@ -1078,4 +1078,4 @@ const mockData = [
   dataSetFive,
 ];
 
-module.exports = { mockData, formattedData };
+export default { mockData, formattedData };

@@ -21,7 +21,7 @@ const unformattedApiWithFailure = "http://localhost:8080/api/getChartData/3";
 const ChallengeModal01: React.FC<IProps> = React.memo((props) => {
   const { isOpen, onClose } = props;
 
-  const chartRef = useRef(null);
+  const chartRef = useRef<HTMLDivElement>(null);
 
   const modalClasses = classnames("challenge-modal", {
     "is-open": isOpen,

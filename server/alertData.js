@@ -58,4 +58,4 @@ const alerts = [
   },
 ];
 
-module.exports = alerts;
+export default alerts;

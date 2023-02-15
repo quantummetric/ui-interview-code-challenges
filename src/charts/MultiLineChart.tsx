@@ -607,7 +607,7 @@ class MultiLineChart
       clearTimeout(this.renderQueue);
     }
 
-    this.renderQueue = setTimeout(() => {
+    this.renderQueue = window.setTimeout(() => {
       this.renderQueue = null;
       this.renderChart();
     });
